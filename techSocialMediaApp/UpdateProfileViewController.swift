@@ -32,6 +32,17 @@ class UpdateProfileViewController: UIViewController {
         Task {
             try await NetworkController.shared.updateProfile(userSecret: User.current!.secret, updatedProfile: UserProfileViewController.sharedProfile!)
         }
+        Task {
+            do {
+                var posts = try await NetworkController.shared.getUserPosts(userSecret: User.current!.secret, userUUID: User.current!.userUUID, pageNumber: 0)
+                print(posts)
+                try await NetworkController.shared.deletePost(userSecret: User.current!.secret, postid: 525)
+                posts =  try await NetworkController.shared.getUserPosts(userSecret: User.current!.secret, userUUID: User.current!.userUUID, pageNumber: 0)
+                print(posts)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
         delegate?.didUpdate()
         dismiss(animated: true)
     }

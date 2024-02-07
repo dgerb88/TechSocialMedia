@@ -43,3 +43,13 @@ struct Post: Codable {
     var createdDate: String
     
 }
+
+struct Comment: Codable {
+    
+    var commentId: Int
+    var body: String
+    var userName: String
+    var userId: UUID
+    var createdDate: String
+    
+}
