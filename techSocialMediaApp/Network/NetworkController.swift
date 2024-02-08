@@ -279,4 +279,35 @@ class NetworkController {
         }
     }
     
+    func editPost(userSecret: UUID, postid: Int, title: String, body: String) async throws -> Post {
+        
+        let postDict: [String: Any] = [
+            "postid": postid,
+            "title": title,
+            "body": body,
+        ]
+        let credentials: [String: Any] = ["userSecret": userSecret.uuidString, "post": postDict]
+        
+        let session = URLSession.shared
+        var request = URLRequest(url: URL(string: "\(API.url)/editPost")!)
+        
+        // Add json data to the body of the request. Also clarify that this is a POST request
+        request.httpBody = try JSONSerialization.data(withJSONObject: credentials, options: .prettyPrinted)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        // Make the request
+        let (data, response) = try await session.data(for: request)
+        
+        // Ensure we had a good response (status 200)
+        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+            throw NetworkError.couldNotEditPost
+        }
+        
+        // Decode our response data to a usable User struct
+        let decoder = JSONDecoder()
+        let newPost = try decoder.decode(Post.self, from: data)
+        return newPost
+    }
+    
 }

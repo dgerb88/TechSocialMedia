@@ -20,7 +20,7 @@ class LoginViewController: UIViewController {
         passwordTextField.isSecureTextEntry = true
         emailTextField.text = "JONATHAN.GERBER4791@STU.MTEC.EDU"
         passwordTextField.text = "0e300bb0-2912-4acd-962f-8159e524e80b"
-        
+        signInButtonTapped([])
     }
 
     @IBAction func signInButtonTapped(_ sender: Any) {
