@@ -9,7 +9,6 @@ import UIKit
 
 class PostTableViewCell: UITableViewCell {
     
-    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var bodyLabel: UILabel!
@@ -19,22 +18,22 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var likesNumberLabel: UILabel!
     
     
-    
     var delegate: PostIdDelegate?
     
     var post: Post?
-
-    @IBAction func editButtonTapped(_ sender: Any) {
-        
-    }
+    var selectedPostId = 0
     
     @IBAction func LikesButtonTapped(_ sender: Any) {
-        delegate?.likeButtonTapped(postid: post?.postid ?? 1)
+        delegate?.likeButtonTapped(post: post!)
     }
     
     
     @IBAction func commentsButtonTapped(_ sender: Any) {
-        delegate?.commentsButtonTapped(postid: post?.postid ?? 1)
+        delegate?.commentsButtonTapped(post: post!)
+    }
+    
+    @IBAction func editButtonTapped(_ sender: Any) {
+        delegate?.editPostTapped(post: post!)
     }
     
     
@@ -46,7 +45,22 @@ class PostTableViewCell: UITableViewCell {
     
 }
 
+extension PostTableViewCell: EditPostDelegate {
+    func updatePost(post: Post) {
+        delegate?.returnFromEdit(post: post)
+    }
+    func newPost(post: Post) {
+        delegate?.returnFromNewPost(post: post)
+    }
+    
+    
+}
+
+
 protocol PostIdDelegate: AnyObject {
-    func likeButtonTapped(postid: Int)
-    func commentsButtonTapped(postid: Int)
+    func likeButtonTapped(post: Post)
+    func commentsButtonTapped(post: Post)
+    func returnFromEdit(post: Post)
+    func editPostTapped(post: Post)
+    func returnFromNewPost(post: Post)
 }

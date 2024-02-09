@@ -13,6 +13,7 @@ class UserProfileViewController: UIViewController, UpdateEditProfileViewDelegate
     static var sharedProfile: UserProfile?
     
     var posts = [Post]()
+    var comments = [Comment]()
 
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var techInterestsLabel: UILabel!
@@ -35,11 +36,16 @@ class UserProfileViewController: UIViewController, UpdateEditProfileViewDelegate
         // Do any additional setup after loading the view.
     }
     
-    
     @IBSegueAction func updateSegue(_ coder: NSCoder) -> UpdateProfileViewController? {
         let vc = UpdateProfileViewController(coder: coder)
         vc?.delegate = self
         return vc
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "editPost", let vc = segue.destination as? EditPostViewController, let post = sender as? Post else { return }
+        vc.post = post
     }
     
     func didUpdate() {
@@ -58,22 +64,42 @@ class UserProfileViewController: UIViewController, UpdateEditProfileViewDelegate
     */
     func fetchPosts() {
         Task {
-            posts = try await networkController.getPosts(userSecret: User.current!.secret, pageNumber: 0)
+            posts = try await networkController.getUserPosts(userSecret: User.current!.secret, userUUID: User.current!.userUUID, pageNumber: 0)
             postTableView.reloadData()
         }
     }
     
-    func updateLikes(with postid: Int) {
+    func updateLikes(with post: Post) {
         Task {
-            try await networkController.updateLikes(userSecret: User.current!.secret ,postid: postid )
+            let newPost = try await networkController.updateLikes(userSecret: User.current!.secret, postid: post.postid)
+            for index in 0..<posts.count {
+                if posts[index].postid == newPost.postid {
+                    posts[index] = newPost
+                }
+            }
             postTableView.reloadData()
         }
+        
     }
+    
+    @IBAction func newPostTapped(_ sender: Any) {
+        performSegue(withIdentifier: "newPost", sender: sender)
+    }
+    
+    
     func getComments(with postId: Int) {
         Task {
-            try await networkController.getComments(userSecret: User.current!.secret, postid: postId, pageNumber: 0)
-            postTableView.reloadData()
+            comments = try await networkController.getComments(userSecret: User.current!.secret, postid: postId, pageNumber: 0)
         }
+    }
+    
+    func editPost(post: Post) {
+            for index in 0..<posts.count {
+                if posts[index].postid == post.postid {
+                    posts[index] = post
+                }
+            }
+            postTableView.reloadData()
     }
     
 }
@@ -94,11 +120,13 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate 
         
         cell.authorLabel.text = posts[indexPath.row].authorUserName
         cell.bodyLabel.text = posts[indexPath.row].body
-        cell.commentsLabel.text = "Comments \(posts[indexPath.row].numComments)"
+        cell.commentsLabel.text = "\(posts[indexPath.row].numComments)"
         cell.dateLabel.text = posts[indexPath.row].createdDate
         cell.titleLabel.text = posts[indexPath.row].title
         cell.likesNumberLabel.text = String(posts[indexPath.row].likes)
         cell.delegate = self
+        cell.selectedPostId = posts[indexPath.row].postid
+        cell.post = posts[indexPath.row]
         // Configure the cell...
 
         return cell
@@ -120,11 +148,21 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate 
 }
 
 extension UserProfileViewController: PostIdDelegate {
-    func likeButtonTapped(postid: Int) {
-        updateLikes(with: postid)
+    func returnFromEdit(post: Post) {
+        editPost(post: post)
     }
-    func commentsButtonTapped(postid: Int) {
-        <#code#>
+    func returnFromNewPost(post: Post) {
+        posts.append(post)
+        postTableView.reloadData()
+    }
+    func likeButtonTapped(post: Post) {
+        updateLikes(with: post)
+    }
+    func commentsButtonTapped(post: Post) {
+        getComments(with: post.postid)
+    }
+    func editPostTapped(post: Post) {
+        performSegue(withIdentifier: "editPost", sender: post)
     }
     
 }

@@ -224,7 +224,6 @@ class NetworkController {
         let decoder = JSONDecoder()
         let updatedPost = try decoder.decode(Post.self, from: data)
         return updatedPost
-        
     }
     
     func getUserPosts(userSecret: UUID, userUUID: UUID, pageNumber: Int?) async throws -> [Post] {

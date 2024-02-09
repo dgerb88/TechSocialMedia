@@ -11,6 +11,7 @@
 		4FAC97712B728A340043F4A5 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAC97702B728A340043F4A5 /* UserProfileViewController.swift */; };
 		4FD4380F2B75276000E3F6F2 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD4380E2B75276000E3F6F2 /* PostTableViewCell.swift */; };
 		4FDEC9B52B73D28800D7224C /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDEC9B42B73D28800D7224C /* UpdateProfileViewController.swift */; };
+		4FFF8FEC2B7674CD00D02F46 /* EditPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF8FEB2B7674CD00D02F46 /* EditPostViewController.swift */; };
 		A3C2D4CD2908297000C0AF5F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2D4CC2908297000C0AF5F /* User.swift */; };
 		A3C2D4CF29082B1300C0AF5F /* AuthenticationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2D4CE29082B1300C0AF5F /* AuthenticationController.swift */; };
 		A3C2D4D129082BF900C0AF5F /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2D4D029082BF900C0AF5F /* API.swift */; };
@@ -27,6 +28,7 @@
 		4FAC97702B728A340043F4A5 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		4FD4380E2B75276000E3F6F2 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		4FDEC9B42B73D28800D7224C /* UpdateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewController.swift; sourceTree = "<group>"; };
+		4FFF8FEB2B7674CD00D02F46 /* EditPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPostViewController.swift; sourceTree = "<group>"; };
 		A3C2D4CC2908297000C0AF5F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A3C2D4CE29082B1300C0AF5F /* AuthenticationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationController.swift; sourceTree = "<group>"; };
 		A3C2D4D029082BF900C0AF5F /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				4FAC97702B728A340043F4A5 /* UserProfileViewController.swift */,
 				4FDEC9B42B73D28800D7224C /* UpdateProfileViewController.swift */,
 				4FD4380E2B75276000E3F6F2 /* PostTableViewCell.swift */,
+				4FFF8FEB2B7674CD00D02F46 /* EditPostViewController.swift */,
 				A3DFFA4D2901B8F400A28B8C /* Main.storyboard */,
 				A3DFFA502901B8F500A28B8C /* Assets.xcassets */,
 				A3DFFA522901B8F500A28B8C /* LaunchScreen.storyboard */,
@@ -186,6 +189,7 @@
 				A3DFFA482901B8F400A28B8C /* AppDelegate.swift in Sources */,
 				A3C2D4CF29082B1300C0AF5F /* AuthenticationController.swift in Sources */,
 				A3C2D4D129082BF900C0AF5F /* API.swift in Sources */,
+				4FFF8FEC2B7674CD00D02F46 /* EditPostViewController.swift in Sources */,
 				4FD4380F2B75276000E3F6F2 /* PostTableViewCell.swift in Sources */,
 				4FAC976F2B7285720043F4A5 /* NetworkController.swift in Sources */,
 				A3DFFA4A2901B8F400A28B8C /* SceneDelegate.swift in Sources */,

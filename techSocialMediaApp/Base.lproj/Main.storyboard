@@ -131,7 +131,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="w4n-iW-FFM">
-                                <rect key="frame" x="0.0" y="154.66666666666669" width="390" height="606.33333333333326"/>
+                                <rect key="frame" x="0.0" y="196.33333333333331" width="390" height="564.66666666666674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="post" rowHeight="213" id="XK7-lz-Iyh" customClass="PostTableViewCell" customModule="techSocialMediaApp" customModuleProvider="target">
@@ -165,7 +165,8 @@
                                                                     <state key="normal" title="Button"/>
                                                                     <buttonConfiguration key="configuration" style="plain" title="Edit"/>
                                                                     <connections>
-                                                                        <action selector="editButtonTapped:" destination="XK7-lz-Iyh" eventType="touchUpInside" id="ASR-JE-4Cs"/>
+                                                                        <action selector="editButtonTapped:" destination="XK7-lz-Iyh" eventType="touchUpInside" id="c8Z-qS-orx"/>
+                                                                        <segue destination="qdt-R1-6Dh" kind="presentation" identifier="editPost" id="VEX-dt-xdb"/>
                                                                     </connections>
                                                                 </button>
                                                             </subviews>
@@ -260,11 +261,14 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dOW-vD-Cy3">
-                                <rect key="frame" x="310" y="5" width="47" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="drE-5V-5qS">
+                                <rect key="frame" x="16.000000000000007" y="154" width="96.666666666666686" height="34.333333333333343"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
+                                <buttonConfiguration key="configuration" style="plain" title="New Post"/>
+                                <connections>
+                                    <action selector="newPostTapped:" destination="ccs-b3-wZi" eventType="touchUpInside" id="gU2-gj-tTU"/>
+                                    <segue destination="qdt-R1-6Dh" kind="presentation" identifier="newPost" id="X4C-UW-EDn"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hzI-e5-WXF"/>
@@ -272,11 +276,13 @@
                         <constraints>
                             <constraint firstItem="lp2-ss-pnM" firstAttribute="leading" secondItem="hzI-e5-WXF" secondAttribute="leading" constant="20" id="0GX-Ja-jJ1"/>
                             <constraint firstItem="KZS-WS-LdA" firstAttribute="leading" secondItem="hzI-e5-WXF" secondAttribute="leading" constant="20" id="3fW-Gz-UWG"/>
-                            <constraint firstItem="w4n-iW-FFM" firstAttribute="top" secondItem="lp2-ss-pnM" secondAttribute="bottom" constant="20" id="4EM-EM-Q7Z"/>
+                            <constraint firstItem="hzI-e5-WXF" firstAttribute="trailing" secondItem="drE-5V-5qS" secondAttribute="trailing" constant="277.32999999999998" id="8F8-mA-IbF"/>
                             <constraint firstItem="jZZ-ri-NSx" firstAttribute="leading" secondItem="hzI-e5-WXF" secondAttribute="leading" constant="20" id="EPp-PL-Kv6"/>
                             <constraint firstItem="KZS-WS-LdA" firstAttribute="top" secondItem="hzI-e5-WXF" secondAttribute="top" id="Fhh-jU-4da"/>
                             <constraint firstItem="hzI-e5-WXF" firstAttribute="trailing" secondItem="w4n-iW-FFM" secondAttribute="trailing" id="KCP-tv-uYA"/>
+                            <constraint firstItem="w4n-iW-FFM" firstAttribute="top" secondItem="drE-5V-5qS" secondAttribute="bottom" constant="8" id="Ra8-Zw-lTB"/>
                             <constraint firstItem="lp2-ss-pnM" firstAttribute="top" secondItem="jZZ-ri-NSx" secondAttribute="bottom" constant="8" id="VMo-YU-slE"/>
+                            <constraint firstItem="drE-5V-5qS" firstAttribute="top" secondItem="lp2-ss-pnM" secondAttribute="bottom" constant="19.329999999999998" id="b7O-9b-h5u"/>
                             <constraint firstItem="jZZ-ri-NSx" firstAttribute="top" secondItem="KZS-WS-LdA" secondAttribute="bottom" constant="5.3300000000000001" id="bSh-P8-MTh"/>
                             <constraint firstItem="vjV-1g-nm3" firstAttribute="leading" secondItem="KZS-WS-LdA" secondAttribute="trailing" constant="91" id="bg6-u7-pSC"/>
                             <constraint firstItem="w4n-iW-FFM" firstAttribute="bottom" secondItem="hzI-e5-WXF" secondAttribute="bottom" id="elX-Z2-PdB"/>
@@ -284,6 +290,7 @@
                             <constraint firstItem="hzI-e5-WXF" firstAttribute="trailing" secondItem="jZZ-ri-NSx" secondAttribute="trailing" constant="20" id="hda-6u-Ztn"/>
                             <constraint firstItem="hzI-e5-WXF" firstAttribute="trailing" secondItem="vjV-1g-nm3" secondAttribute="trailing" constant="4" id="hpe-E5-UYz"/>
                             <constraint firstItem="hzI-e5-WXF" firstAttribute="trailing" secondItem="lp2-ss-pnM" secondAttribute="trailing" constant="20" id="lWM-hl-3uE"/>
+                            <constraint firstItem="drE-5V-5qS" firstAttribute="leading" secondItem="hzI-e5-WXF" secondAttribute="leading" constant="16" id="vo7-Df-W82"/>
                             <constraint firstItem="vjV-1g-nm3" firstAttribute="top" secondItem="hzI-e5-WXF" secondAttribute="top" id="yJW-vn-RhU"/>
                         </constraints>
                     </view>
@@ -362,7 +369,86 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gXp-Fe-7At" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2420" y="1360"/>
+            <point key="canvasLocation" x="1491" y="1376"/>
+        </scene>
+        <!--Edit Post View Controller-->
+        <scene sceneID="pP8-Me-pTJ">
+            <objects>
+                <viewController id="qdt-R1-6Dh" customClass="EditPostViewController" customModule="techSocialMediaApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cym-dz-Ipv">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Change Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lEi-Cf-q17">
+                                <rect key="frame" x="20" y="169" width="350" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vqy-Qe-HoD">
+                                <rect key="frame" x="164.66666666666666" y="546" width="61" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Save"/>
+                                <connections>
+                                    <action selector="saveButtonTapped:" destination="qdt-R1-6Dh" eventType="touchUpInside" id="psT-JH-Ee6"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Update post title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpK-lf-Sno">
+                                <rect key="frame" x="131.66666666666666" y="106" width="126.99999999999997" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Update post body" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Sw-ES-Tfb">
+                                <rect key="frame" x="126.66666666666669" y="256" width="137" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4XP-Yb-Kac">
+                                <rect key="frame" x="158" y="620" width="74" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Delete"/>
+                                <connections>
+                                    <action selector="deleteButtonTapped:" destination="qdt-R1-6Dh" eventType="touchUpInside" id="Rws-Mb-IyZ"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Change Body" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="biz-Dv-z1Y">
+                                <rect key="frame" x="20" y="312" width="350" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Bb7-lx-iUJ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="lEi-Cf-q17" firstAttribute="leading" secondItem="Bb7-lx-iUJ" secondAttribute="leading" constant="20" id="3kJ-KR-4CQ"/>
+                            <constraint firstItem="Vqy-Qe-HoD" firstAttribute="top" secondItem="biz-Dv-z1Y" secondAttribute="bottom" constant="200" id="9d4-sY-4yg"/>
+                            <constraint firstItem="fpK-lf-Sno" firstAttribute="top" secondItem="Bb7-lx-iUJ" secondAttribute="top" constant="106" id="Ctb-tg-nSr"/>
+                            <constraint firstItem="Bb7-lx-iUJ" firstAttribute="trailing" secondItem="lEi-Cf-q17" secondAttribute="trailing" constant="20" id="HfI-5e-efK"/>
+                            <constraint firstItem="lEi-Cf-q17" firstAttribute="centerX" secondItem="cym-dz-Ipv" secondAttribute="centerX" id="PJb-fQ-L6z"/>
+                            <constraint firstItem="fpK-lf-Sno" firstAttribute="centerX" secondItem="cym-dz-Ipv" secondAttribute="centerX" id="S65-mX-KcP"/>
+                            <constraint firstItem="4XP-Yb-Kac" firstAttribute="top" secondItem="Vqy-Qe-HoD" secondAttribute="bottom" constant="39" id="SwI-DE-rWJ"/>
+                            <constraint firstItem="9Sw-ES-Tfb" firstAttribute="top" secondItem="lEi-Cf-q17" secondAttribute="bottom" constant="53" id="TXm-zF-2P0"/>
+                            <constraint firstItem="biz-Dv-z1Y" firstAttribute="top" secondItem="9Sw-ES-Tfb" secondAttribute="bottom" constant="35" id="WcZ-v7-Kk3"/>
+                            <constraint firstItem="lEi-Cf-q17" firstAttribute="top" secondItem="fpK-lf-Sno" secondAttribute="bottom" constant="42" id="Z8M-8n-td2"/>
+                            <constraint firstItem="Bb7-lx-iUJ" firstAttribute="trailing" secondItem="biz-Dv-z1Y" secondAttribute="trailing" constant="20" id="egw-NK-Hiw"/>
+                            <constraint firstItem="9Sw-ES-Tfb" firstAttribute="centerX" secondItem="cym-dz-Ipv" secondAttribute="centerX" id="mRz-bF-A8H"/>
+                            <constraint firstItem="biz-Dv-z1Y" firstAttribute="centerX" secondItem="cym-dz-Ipv" secondAttribute="centerX" id="mbx-AG-nEj"/>
+                            <constraint firstItem="biz-Dv-z1Y" firstAttribute="leading" secondItem="Bb7-lx-iUJ" secondAttribute="leading" constant="20" id="rKB-YR-Fgz"/>
+                            <constraint firstItem="Vqy-Qe-HoD" firstAttribute="centerX" secondItem="cym-dz-Ipv" secondAttribute="centerX" id="veE-Lh-p4N"/>
+                            <constraint firstItem="4XP-Yb-Kac" firstAttribute="centerX" secondItem="cym-dz-Ipv" secondAttribute="centerX" id="zcC-SX-VHd"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="changeBodyTextfield" destination="biz-Dv-z1Y" id="eZc-s2-GHb"/>
+                        <outlet property="changeTitleTextField" destination="lEi-Cf-q17" id="0vG-Fc-J58"/>
+                        <outlet property="postBodyLabel" destination="9Sw-ES-Tfb" id="JeE-R4-MoE"/>
+                        <outlet property="postTitleLabel" destination="fpK-lf-Sno" id="Tw1-bc-IN6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qOW-1k-dgX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2420" y="1375.5924170616113"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Mmc-OF-Gyj">
@@ -383,9 +469,11 @@
             <point key="canvasLocation" x="1490.7692307692307" y="683.88625592417054"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="X4C-UW-EDn"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="person.fill.turn.down" catalog="system" width="128" height="120"/>
-        <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
