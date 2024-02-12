@@ -13,6 +13,7 @@ class UserProfileViewController: UIViewController, UpdateEditProfileViewDelegate
     static var sharedProfile: UserProfile?
     
     var posts = [Post]()
+    var postid = 0
     var comments = [Comment]()
 
     @IBOutlet weak var userNameLabel: UILabel!
@@ -32,7 +33,7 @@ class UserProfileViewController: UIViewController, UpdateEditProfileViewDelegate
         }
         fetchPosts()
         postTableView.dataSource = self
-        postTableView.delegate = self 
+        postTableView.delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -45,6 +46,7 @@ class UserProfileViewController: UIViewController, UpdateEditProfileViewDelegate
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "editPost", let vc = segue.destination as? EditPostViewController, let post = sender as? Post else { return }
+        postid = post.postid
         vc.post = post
     }
     
@@ -101,6 +103,14 @@ class UserProfileViewController: UIViewController, UpdateEditProfileViewDelegate
             }
             postTableView.reloadData()
     }
+    func deletePost(post: Post) {
+        for index in 0..<posts.count {
+            if posts[index].postid == post.postid {
+                posts.remove(at: index)
+            }
+        }
+        postTableView.reloadData()
+    }
     
 }
 extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate {
@@ -148,13 +158,6 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate 
 }
 
 extension UserProfileViewController: PostIdDelegate {
-    func returnFromEdit(post: Post) {
-        editPost(post: post)
-    }
-    func returnFromNewPost(post: Post) {
-        posts.append(post)
-        postTableView.reloadData()
-    }
     func likeButtonTapped(post: Post) {
         updateLikes(with: post)
     }
@@ -163,6 +166,38 @@ extension UserProfileViewController: PostIdDelegate {
     }
     func editPostTapped(post: Post) {
         performSegue(withIdentifier: "editPost", sender: post)
+    }
+    
+}
+
+extension UserProfileViewController {
+    
+    @IBAction func unwindToUserProfileView(_ unwindSegue: UIStoryboardSegue) {
+        let sourceViewController = unwindSegue.source as! EditPostViewController
+        // Use data from the view controller which initiated the unwind segue
+        if !sourceViewController.didTapDelete {
+            sourceViewController.post?.title = sourceViewController.changeTitleTextField.text ?? ""
+            sourceViewController.post?.body = sourceViewController.changeBodyTextfield.text ?? ""
+            Task {
+                if sourceViewController.post == nil {
+                    let newPost = try await NetworkController.shared.createPost(userSecret: User.current!.secret, title: sourceViewController.changeTitleTextField.text ?? "", body: sourceViewController.changeBodyTextfield.text ?? "")
+                    self.posts.append(newPost)
+                    self.postTableView.reloadData()
+                } else {
+                    do {
+                        try await NetworkController.shared.editPost(userSecret: User.current!.secret, postid: sourceViewController.post!.postid, title: sourceViewController.changeTitleTextField.text ?? "", body: sourceViewController.changeBodyTextfield.text ?? "")
+                        sourceViewController.post?.title = sourceViewController.changeTitleTextField.text ?? ""
+                        sourceViewController.post?.body = sourceViewController.changeBodyTextfield.text ?? ""
+                        let newPost = sourceViewController.post!
+                        self.editPost(post: newPost)
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                }
+            }
+        } else {
+            deletePost(post: sourceViewController.post!)
+        }
     }
     
 }

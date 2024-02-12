@@ -278,7 +278,7 @@ class NetworkController {
         }
     }
     
-    func editPost(userSecret: UUID, postid: Int, title: String, body: String) async throws -> Post {
+    func editPost(userSecret: UUID, postid: Int, title: String, body: String) async throws {
         
         let postDict: [String: Any] = [
             "postid": postid,
@@ -302,11 +302,6 @@ class NetworkController {
         guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
             throw NetworkError.couldNotEditPost
         }
-        
-        // Decode our response data to a usable User struct
-        let decoder = JSONDecoder()
-        let newPost = try decoder.decode(Post.self, from: data)
-        return newPost
     }
     
 }

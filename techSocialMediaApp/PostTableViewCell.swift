@@ -39,28 +39,13 @@ class PostTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0))
     }
     
 }
 
-extension PostTableViewCell: EditPostDelegate {
-    func updatePost(post: Post) {
-        delegate?.returnFromEdit(post: post)
-    }
-    func newPost(post: Post) {
-        delegate?.returnFromNewPost(post: post)
-    }
-    
-    
-}
-
-
 protocol PostIdDelegate: AnyObject {
     func likeButtonTapped(post: Post)
     func commentsButtonTapped(post: Post)
-    func returnFromEdit(post: Post)
     func editPostTapped(post: Post)
-    func returnFromNewPost(post: Post)
 }
