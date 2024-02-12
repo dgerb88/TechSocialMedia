@@ -11,6 +11,7 @@ class EditPostViewController: UIViewController {
     
     var post: Post?
     var didTapDelete = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -22,10 +22,10 @@ class NetworkController {
         case couldNotGetUserPosts
         case couldNotDeletePost
         case couldNotEditPost
+        case missingSecret
     }
     
     func getUserProfile(userUUID: UUID, userSecret: UUID) async throws -> UserProfile {
-        
         let session = URLSession.shared
         let url = "\(API.url)/userProfile"
         var urlComponents = URLComponents(string: url)
@@ -197,11 +197,13 @@ class NetworkController {
         
     }
     
-    func updateLikes(userSecret: UUID, postid: Int) async throws -> Post {
-        
+    func updateLikes(postId: Int) async throws -> Post {
+        guard let secret = User.current?.secret.uuidString else {
+            throw NetworkError.missingSecret
+        }
         let credentials: [String: Any] = [
-            "userSecret": userSecret.uuidString,
-            "postid": postid
+            "userSecret": secret,
+            "postid": postId
         ]
         
         let session = URLSession.shared

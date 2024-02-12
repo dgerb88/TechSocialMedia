@@ -55,15 +55,6 @@ class UserProfileViewController: UIViewController, UpdateEditProfileViewDelegate
         techInterestsLabel.text = UserProfileViewController.sharedProfile?.techInterests
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     func fetchPosts() {
         Task {
             posts = try await networkController.getUserPosts(userSecret: User.current!.secret, userUUID: User.current!.userUUID, pageNumber: 0)
@@ -73,7 +64,7 @@ class UserProfileViewController: UIViewController, UpdateEditProfileViewDelegate
     
     func updateLikes(with post: Post) {
         Task {
-            let newPost = try await networkController.updateLikes(userSecret: User.current!.secret, postid: post.postid)
+            let newPost = try await networkController.updateLikes(postId: post.postid)
             for index in 0..<posts.count {
                 if posts[index].postid == newPost.postid {
                     posts[index] = newPost
@@ -114,11 +105,6 @@ class UserProfileViewController: UIViewController, UpdateEditProfileViewDelegate
     
 }
 extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows

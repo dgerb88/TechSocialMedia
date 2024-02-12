@@ -171,13 +171,13 @@
                                                                 </button>
                                                             </subviews>
                                                         </stackView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Body" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7FU-pG-FNV">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Body" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7FU-pG-FNV">
                                                             <rect key="frame" x="0.0" y="50.333333333333336" width="334" height="90.333333333333314"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="KsL-bq-Dbq">
+                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="KsL-bq-Dbq">
                                                             <rect key="frame" x="0.0" y="156.66666666666666" width="334" height="34.333333333333343"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="-7" translatesAutoresizingMaskIntoConstraints="NO" id="j31-UH-dcK">
@@ -201,13 +201,10 @@
                                                                     </subviews>
                                                                 </stackView>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="-5" translatesAutoresizingMaskIntoConstraints="NO" id="ejn-Nk-zgn">
-                                                                    <rect key="frame" x="174.33333333333334" y="0.0" width="63.666666666666657" height="34.333333333333336"/>
+                                                                    <rect key="frame" x="156" y="0.0" width="61" height="34.333333333333336"/>
                                                                     <subviews>
                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Upm-YW-REq">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="60" height="34.333333333333336"/>
-                                                                            <constraints>
-                                                                                <constraint firstAttribute="width" constant="60" id="myn-ES-iAS"/>
-                                                                            </constraints>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="57.333333333333336" height="34.333333333333336"/>
                                                                             <color key="tintColor" systemColor="systemYellowColor"/>
                                                                             <state key="normal" title="Button"/>
                                                                             <buttonConfiguration key="configuration" style="plain" title="Likes">
@@ -218,7 +215,7 @@
                                                                             </connections>
                                                                         </button>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cz0-bo-8eJ">
-                                                                            <rect key="frame" x="54.999999999999972" y="0.0" width="8.6666666666666643" height="34.333333333333336"/>
+                                                                            <rect key="frame" x="52.333333333333343" y="0.0" width="8.6666666666666643" height="34.333333333333336"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
@@ -234,11 +231,6 @@
                                                             </subviews>
                                                         </stackView>
                                                     </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="8UG-xt-zyC" secondAttribute="trailing" id="WRp-gi-Soe"/>
-                                                        <constraint firstItem="8UG-xt-zyC" firstAttribute="top" secondItem="O0H-sP-f6b" secondAttribute="top" id="npZ-gA-U2w"/>
-                                                        <constraint firstItem="8UG-xt-zyC" firstAttribute="leading" secondItem="O0H-sP-f6b" secondAttribute="leading" id="s5t-sw-Ovl"/>
-                                                    </constraints>
                                                 </stackView>
                                             </subviews>
                                             <constraints>

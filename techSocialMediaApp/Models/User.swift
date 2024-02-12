@@ -14,7 +14,7 @@ struct User: Decodable, Encodable {
     var userUUID: UUID
     var secret: UUID
     var userName: String
-    
+    var profile: UserProfile?
     static var current: User?
 }
 
