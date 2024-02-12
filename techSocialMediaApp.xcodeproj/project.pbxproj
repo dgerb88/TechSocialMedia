@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4FA88ECA2B7A79520043FDC1 /* OthersPostsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA88EC92B7A79520043FDC1 /* OthersPostsTableViewController.swift */; };
 		4FAC976F2B7285720043F4A5 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAC976E2B7285720043F4A5 /* NetworkController.swift */; };
 		4FAC97712B728A340043F4A5 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAC97702B728A340043F4A5 /* UserProfileViewController.swift */; };
 		4FD4380F2B75276000E3F6F2 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD4380E2B75276000E3F6F2 /* PostTableViewCell.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4FA88EC92B7A79520043FDC1 /* OthersPostsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersPostsTableViewController.swift; sourceTree = "<group>"; };
 		4FAC976E2B7285720043F4A5 /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		4FAC97702B728A340043F4A5 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		4FD4380E2B75276000E3F6F2 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				4FDEC9B42B73D28800D7224C /* UpdateProfileViewController.swift */,
 				4FD4380E2B75276000E3F6F2 /* PostTableViewCell.swift */,
 				4FFF8FEB2B7674CD00D02F46 /* EditPostViewController.swift */,
+				4FA88EC92B7A79520043FDC1 /* OthersPostsTableViewController.swift */,
 				A3DFFA4D2901B8F400A28B8C /* Main.storyboard */,
 				A3DFFA502901B8F500A28B8C /* Assets.xcassets */,
 				A3DFFA522901B8F500A28B8C /* LaunchScreen.storyboard */,
@@ -190,6 +193,7 @@
 				A3C2D4CF29082B1300C0AF5F /* AuthenticationController.swift in Sources */,
 				A3C2D4D129082BF900C0AF5F /* API.swift in Sources */,
 				4FFF8FEC2B7674CD00D02F46 /* EditPostViewController.swift in Sources */,
+				4FA88ECA2B7A79520043FDC1 /* OthersPostsTableViewController.swift in Sources */,
 				4FD4380F2B75276000E3F6F2 /* PostTableViewCell.swift in Sources */,
 				4FAC976F2B7285720043F4A5 /* NetworkController.swift in Sources */,
 				A3DFFA4A2901B8F400A28B8C /* SceneDelegate.swift in Sources */,

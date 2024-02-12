@@ -29,6 +29,9 @@ class UpdateProfileViewController: UIViewController {
     @IBAction func saveButton(_ sender: Any) {
         UserProfileViewController.sharedProfile?.bio = updateBioTextField.text
         UserProfileViewController.sharedProfile?.techInterests = techInterestsTextField.text
+        UserProfileViewController.sharedProfile?.userName = "Dax Gerber"
+
+        
         Task {
             try await NetworkController.shared.updateProfile(userSecret: User.current!.secret, updatedProfile: UserProfileViewController.sharedProfile!)
         }

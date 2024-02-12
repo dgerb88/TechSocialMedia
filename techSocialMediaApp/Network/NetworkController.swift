@@ -296,7 +296,7 @@ class NetworkController {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         // Make the request
-        let (data, response) = try await session.data(for: request)
+        let (_, response) = try await session.data(for: request)
         
         // Ensure we had a good response (status 200)
         guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
